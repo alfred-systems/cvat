@@ -385,6 +385,14 @@ class ShapeModel extends Listener {
         }
 
         this.notify('outside');
+
+        let later_frames = Object.keys(this._positions)
+            .map(v => Number.parseInt(v))
+            .filter(v => v > frame)
+        
+        for(let f of later_frames) {
+            this.switchOutside(f)
+        }        
     }
 
     switchKeyFrame(frame) {
